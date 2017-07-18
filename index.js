@@ -177,3 +177,49 @@ var firstPikeUL = {
   firstPikeUL.render();
   firstPikeUL.calcRandomCustomer();
   console.log(firstPikeUL.randomCustomer);
+
+var allStores = [];
+var storeTables = document.getElementById();
+
+
+  function Store(name, minCustomer,maxCustomer,avgSales){
+
+  }
+    this.name = name;
+    this.minCustomer = minCustomer;
+    this.maxCustomer = maxCustomer;
+    this.avgSales = avgSales;
+    this.randomCustomer: [],
+    allStores.push(this);
+    this.render = function() {
+      var trEl = document.createElement('tr');
+
+      var tdEl = document.createElement('td');
+      tdEl.textContent = this.name;
+      trEl.appendChild(tdEl);
+    }
+    //randomCookies: function () {
+
+      function Cat(name, color, tail){
+  this.name = name;
+  this.color = color;
+  this.tail = tail;
+  allCats.push(this);
+  this.render = function() {
+    var trEl = document.createElement('tr');
+
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.name;
+    trEl.appendChild(tdEl);
+
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.color;
+    trEl.appendChild(tdEl);
+
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.tail;
+    trEl.appendChild(tdEl);
+
+    catTable.appendChild(trEl);
+  };
+}
