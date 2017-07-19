@@ -1,37 +1,5 @@
 'use strict';
 
-
-
-//New store on 1st and Pike
-
-// //randomCookies: function () {
-//
-//       return Math.random(Math.floor() * (this.maxCustomer - this.minCustomer - 1)) + this.avgSales;
-//
-//     },
-//
-//  calcRandomCustomer:
-//     function() {
-//
-//       for (var i = 0; i < hours.length; i++) {
-//         this.randomCustomer.push(this.randomCookies());
-//
-//
-//       }
-//     },
-//   render: function(){
-//     var firstPikeUL = document.getElementById('firstPike');
-//       for (var i = 0; i < hours.length; i++){
-//     var liEl = document.createElement('li');
-//      liEl.textContent = hours[i] + ': ' + this.randomCookies();
-//      firstPikeUL.appendChild(liEl);
-//       }
-//     }
-//   };
-//   firstPikeUL.render();
-//   firstPikeUL.calcRandomCustomer();
-//   console.log(firstPikeUL.randomCustomer);
-
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allStores = [];
 var storeTable = document.getElementById('store');
@@ -100,9 +68,11 @@ new Store('first and pike', 23, 65, 6.3);
 
 function tableHeader() {
   var trEl = document.createElement('tr')
+
   var thEl = document.createElement('th');
   thEl.textContent = '';
   trEl.appendChild(thEl);
+
   for (var i = 0; i < hours.length; i++) {
     var thElementHours = document.createElement('th');
     thElementHours.textContent = hours[i];
@@ -112,17 +82,11 @@ function tableHeader() {
 storeTable.appendChild(trEl);
 }
 
-//function storeSales() {
-  //for (var i = 0; i < cookiesPerHour.length; i++) {
-//
-  //}
-//}
-
 function allRows() {
   for (var i = 0; i< allStores.length; i++) {
     allStores[i].render();
   }
 }
 tableHeader();
-//allStores();
+//allStores 
 allRows();
