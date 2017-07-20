@@ -1,20 +1,37 @@
-** {
+* {
   font-family: 'Baloo', cursive;
+  background-color: lavender;
 }
 
-table {
-	border: 10px solid black;
+h1 {
+  color: salmon;
+}
+
+h2 {
+  color: salmon;
+  font-style: italic;
+  font-weight: bold;
+}
+
+label {
+  display: block;
 }
 
 td {
 	padding: 10px;
-	border-radius: 15px;
   border: 1px solid black;
 }
 
 th {
-	background-color: navy;
-	color: white;
+	background-color: lightblue;
+	color: blue;
+}
+
+tr {
+  font-family: 'poppins' sans-serif;
+}
+
+
 
 
 
