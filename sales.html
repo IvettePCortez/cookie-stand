@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title> Pat's Salmon Cookies </title>
+  <style rel="stylesheet" type= "text/css" href= style.css> </style>
 </head>
 <body>
 
@@ -11,18 +12,26 @@
   <table id="store"></table>
 
   <h1> Our cookie business is growing!</h1>
-  <form id = "new location">
+  <form id="newLocation">
     <fieldset>
+
       <legend> Add new location here: </legend>
 
-      <label for ="name"> New location: </label>
-      <input name= "name" type="text" placeholder= "enter location name"/>
+      <label> New location:
+        <input id="name" type="text" placeholder= "enter location name"/>
+      </label>
 
-      <label for= "cookiesSold"> Cookies sold per Hour: </label>
-      <input name= "cookiesSold" type="text" placeholder="number of cookies"/>
+      <label> Cookies sold per Hour:
+        <input id="cookiesSold" type="text" placeholder="number of cookies"/>
+      </label>
 
-      <label for= "customersPerHour"> Number of customers: </label>
-      <input name= "customersPerHour" type= "text" placeholder="number of customers"/>
+      <label> Minimum Number of customers:
+        <input id="minCustomersPerHour" type= "text" placeholder="minimun number of customers"/>
+      </label>
+
+      <label> Maximum Number of customers:
+        <input id="maxCustomersPerHour" type= "text" placeholder="maximum number of customers"/>
+      </label>
 
       <button type= "submit"> Enter new data</button>
     </fieldset>
@@ -30,7 +39,7 @@
 
     <button id= "submit"> Clear all data</button>
 
-    <ul>
+    <ul id="data">What goes there?</ul>
 
 
 
