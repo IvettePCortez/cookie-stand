@@ -1,44 +1,13 @@
 'use strict';
 
-
-
-//New store on 1st and Pike
-
-// //randomCookies: function () {
-//
-//       return Math.random(Math.floor() * (this.maxCustomer - this.minCustomer - 1)) + this.avgSales;
-//
-//     },
-//
-//  calcRandomCustomer:
-//     function() {
-//
-//       for (var i = 0; i < hours.length; i++) {
-//         this.randomCustomer.push(this.randomCookies());
-//
-//
-//       }
-//     },
-//   render: function(){
-//     var firstPikeUL = document.getElementById('firstPike');
-//       for (var i = 0; i < hours.length; i++){
-//     var liEl = document.createElement('li');
-//      liEl.textContent = hours[i] + ': ' + this.randomCookies();
-//      firstPikeUL.appendChild(liEl);
-//       }
-//     }
-//   };
-//   firstPikeUL.render();
-//   firstPikeUL.calcRandomCustomer();
-//   console.log(firstPikeUL.randomCustomer);
-
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allStores = [];
 var storeTable = document.getElementById('store');
-var cookieTable = document.getElementById('table')
+var cookieTable = document.getElementById('table');
+
 var cookiesPerHour = [];
 
-
+//constructor function
 function Store(name, minCustomer, maxCustomer, avgSales){
 
   this.name = name;
@@ -61,6 +30,8 @@ function Store(name, minCustomer, maxCustomer, avgSales){
       this.cookiesPerHour.push(tempCookies);
       this.totalCookiesPerDay += tempCookies;
     }
+
+
   };
   this.render = function() {
     this.generatesCookiesPerHour();
@@ -72,7 +43,7 @@ function Store(name, minCustomer, maxCustomer, avgSales){
     tdEl.textContent = this.name;
     trEl.appendChild(tdEl);
 
-    for (var i = 0; i< hours.length; i++) {
+    for (var i = 0; i < hours.length; i++) {
       var tdEl = document.createElement('td');
       tdEl.textContent = this.cookiesPerHour[i];
       trEl.appendChild(tdEl);
@@ -83,7 +54,6 @@ function Store(name, minCustomer, maxCustomer, avgSales){
     trEl.appendChild(tdElement);
 
     storeTable.appendChild(trEl);
-
 
   };
   allStores.push(this);
@@ -96,33 +66,74 @@ new Store('capitol hill', 20, 38, 2.3);
 new Store('first and pike', 23, 65, 6.3);
 
 
+function processForm(e) {
+  if (e.preventDefault) e.preventDefault();
+
+    /* create a new Store based on form data */
+  var name = document.getElementById('name').value;
+  var cookiesSold = document.getElementById('cookiesSold').value;
+  var minCustomersPerHour = document.getElementById('minCustomersPerHour').value;
+  var maxCustomersPerHour = document.getElementById('maxCustomersPerHour').value;
+
+
+  var newStore = new Store(name,
+      parseInt(minCustomersPerHour),
+      parseInt(maxCustomersPerHour),
+      parseFloat(cookiesSold)
+    );
+  newStore.render();
+
+  return false;
+}
+
+var form = document.getElementById('newLocation');
+form.addEventListener('submit', processForm);
 
 
 function tableHeader() {
-  var trEl = document.createElement('tr')
+  var trEl = document.createElement('tr');
+
   var thEl = document.createElement('th');
   thEl.textContent = '';
   trEl.appendChild(thEl);
+
   for (var i = 0; i < hours.length; i++) {
     var thElementHours = document.createElement('th');
     thElementHours.textContent = hours[i];
     trEl.appendChild(thElementHours);
 
   }
-storeTable.appendChild(trEl);
+  storeTable.appendChild(trEl);
 }
 
-//function storeSales() {
-  //for (var i = 0; i < cookiesPerHour.length; i++) {
-//
-  //}
-//}
+//storeTable.appendChild(trElementTotal);
 
-function allRows() {
-  for (var i = 0; i< allStores.length; i++) {
-    allStores[i].render();
-  }
-}
+
+
+function makeFooter () {
+  var footer = document.createElement('tfoot');
+  var footerRow = document.createElement('tr');
+  //var HourTotal = document.createElement('td');
+  for( var i = 0; i < hours.length; i++) {
+    var hourlyTotals = 0;
+
+    for (var ii = 0; ii < allStores.length; ii++){
+      hourlyTotals += allStores[ii].cookiesPerHour[i];
+    }
+    var tdHourlyTotal = document.createElement('td');
+    tdHourlyTotal.textContent = hourlyTotals;
+    footerRow.appendChild(tdHourlyTotal);
+    footer.appendChild(footerRow);
+
+    // hourlyTotals.render();
+    // allRows.appendChild(footer);
+    storeTable.appendChild(footer);
+
+    // footer.render();
+  };
+  console.log('here I am!');
+};
+
 tableHeader();
-//allStores();
 allRows();
+makeFooter();
