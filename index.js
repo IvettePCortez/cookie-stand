@@ -125,7 +125,7 @@ function makeFooter () {
     var hourlyTotals = 0;
 
     for (var ii = 0; ii < allStores.length; ii++){
-      console.log(allStores[ii], 'ALL STORES')
+      console.log(allStores[ii], 'ALL STORES');
       hourlyTotals += allStores[ii].cookiesPerHour[i];
     }
 
