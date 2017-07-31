@@ -4,7 +4,6 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 var allStores = [];
 var storeTable = document.getElementById('store');
 
-//constructor function
 function Store(name, minCustomer, maxCustomer, avgSales){
 
   this.name = name;
@@ -27,14 +26,11 @@ function Store(name, minCustomer, maxCustomer, avgSales){
       this.cookiesPerHour.push(tempCookies);
       this.totalCookiesPerDay += tempCookies;
     }
-
-
   };
   this.render = function() {
     this.generatesCookiesPerHour();
 
     var trEl = document.createElement('tr');
-
 
     var tdEl = document.createElement('td');
     tdEl.textContent = this.name;
@@ -55,7 +51,6 @@ function Store(name, minCustomer, maxCustomer, avgSales){
   };
   allStores.push(this);
 }
-//randomCookies: function () {
 new Store('alki', 12, 23, 6.2);
 new Store('seatac', 3, 24, 1.2);
 new Store('seacenter', 11, 38, 3.7);
@@ -66,12 +61,10 @@ new Store('first and pike', 23, 65, 6.3);
 function processForm(e) {
   if (e.preventDefault) e.preventDefault();
 
-    /* create a new Store based on form data */
   var name = document.getElementById('name').value;
   var cookiesSold = document.getElementById('cookiesSold').value;
   var minCustomersPerHour = document.getElementById('minCustomersPerHour').value;
   var maxCustomersPerHour = document.getElementById('maxCustomersPerHour').value;
-
 
   var newStore = new Store(name,
       parseInt(minCustomersPerHour),
@@ -79,13 +72,11 @@ function processForm(e) {
       parseFloat(cookiesSold)
     );
   newStore.render();
-
   return false;
 }
 
 var form = document.getElementById('newLocation');
 form.addEventListener('submit', processForm);
-
 
 function tableHeader() {
   var trEl = document.createElement('tr');
@@ -93,7 +84,6 @@ function tableHeader() {
   var thEl = document.createElement('th');
   thEl.textContent = '';
   trEl.appendChild(thEl);
-
 
   for (var i = 0; i < hours.length; i++) {
     var thElementHours = document.createElement('th');
@@ -108,15 +98,9 @@ function tableHeader() {
   storeTable.appendChild(trEl);
 }
 
-//storeTable.appendChild(trElementTotal);
-
-
-
 function makeFooter () {
   var footer = document.createElement('tfoot');
 
-  // var footerRow = document.createElement('tr');
-  //var HourTotal = document.createElement('td');
   var totalFooter = document.createElement('td');
   totalFooter.textContent = 'Hourly totals';
   footer.appendChild(totalFooter);
@@ -132,7 +116,6 @@ function makeFooter () {
     var tdHourlyTotal = document.createElement('td');
     tdHourlyTotal.textContent = hourlyTotals;
     footer.appendChild(tdHourlyTotal);
-
   };
   storeTable.appendChild(footer);
 };
